@@ -32,17 +32,22 @@ class Page_Players_State extends State<Page_Players>
         Row result = Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-                TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Player name"
-                    ),
-                    controller: TextEditingController(text: player_name),
+                SizedBox(width: 20),
+                Expanded(
+                    child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: "Player name"
+                        ),
+                        controller: TextEditingController(text: player_name),
+                    )
                 ),
-                ElevatedButton(
+                SizedBox(width: 20),
+                IconButton(
                     onPressed: () { },
-                    child: Icon(Icons.clear),
+                    icon: Icon(Icons.clear),
                 ),
+                SizedBox(width: 20),
             ]
         );
 
