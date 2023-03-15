@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pages/page_home.dart';
 import 'pages/page_players.dart';
 
 void main() 
@@ -29,8 +30,8 @@ class MyApp extends StatelessWidget
                     bottomNavigationBar: tab_menu(),
                     body: TabBarView(
                         children: [
-                            Container(child: Icon(Icons.home)),
-                            Container(child: Page_Players(title: "Players Page Title")),
+                            Container(child: Page_Home(title: "Main Page")),
+                            Container(child: Page_Players(title: "Players Page")),
                             Container(child: Icon(Icons.format_list_numbered)),
                             Container(child: Icon(Icons.bar_chart_rounded)),
                             Container(child: Icon(Icons.settings)),
@@ -44,8 +45,8 @@ class MyApp extends StatelessWidget
     Widget tab_menu ()
     {
         return Container(
-            color: Color(0xFF3F5AA6),
-            child: TabBar(
+            color: const Color(0xFF3F5AA6),
+            child: const TabBar(
                 labelColor: Colors.white,
                 unselectedLabelColor: Colors.white70,
                 indicatorSize: TabBarIndicatorSize.tab,
@@ -63,30 +64,3 @@ class MyApp extends StatelessWidget
     }
 }
 
-class MyHomePage extends StatefulWidget 
-{
-    const MyHomePage({Key? key, required this.title}) : super(key: key);
-    final String title;
-
-    @override
-    State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> 
-{
-    @override
-    Widget build(BuildContext context) 
-    {
-        return Scaffold(
-            appBar: AppBar(title: Text(widget.title)),
-            body: Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                        const Text('You have pushed the button this many times:'),
-                        ],
-                ),
-            )
-        );
-    }
-}

@@ -115,7 +115,7 @@ class Page_Players_State extends State<Page_Players>
                 children: [
                     FloatingActionButton(
                         onPressed: clear_players,
-                        tooltip: 'Clear al players',
+                        tooltip: 'Clear all players',
                         child: const Icon(Icons.delete),
                     ),
                     SizedBox(width: 20),
