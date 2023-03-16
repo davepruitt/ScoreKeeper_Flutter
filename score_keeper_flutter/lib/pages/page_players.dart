@@ -54,30 +54,30 @@ class Page_Players_State extends State<Page_Players>
         Row result = Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Text(
                     player_number.toString() + ".",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Expanded(
                     child: TextField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             hintText: "Player name"
                         ),
                         controller: c,
                     )
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 IconButton(
                     onPressed: () 
                     { 
                         remove_player(player);
                     },
-                    icon: Icon(Icons.clear),
+                    icon: const Icon(Icons.clear),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
             ]
         );
 
@@ -114,12 +114,14 @@ class Page_Players_State extends State<Page_Players>
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                     FloatingActionButton(
+                        heroTag: "clear_all_players",
                         onPressed: clear_players,
                         tooltip: 'Clear all players',
                         child: const Icon(Icons.delete),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     FloatingActionButton(
+                        heroTag: "add_a_player",
                         onPressed: add_player,
                         tooltip: 'Add a player',
                         child: const Icon(Icons.add),
