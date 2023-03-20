@@ -34,7 +34,20 @@ class Page_Players_State extends State<Page_Players>
     {
         setState(() 
         {
-            globals.app_scoresheet.players.add(Player());
+            //Create a new Player object
+            Player new_player = Player();
+
+            //Make sure the new player has the same number of rounds/scores as all other players
+            if (globals.app_scoresheet.players.isNotEmpty && globals.app_scoresheet.players[0].scores.isNotEmpty)
+            {
+                for(int i = 0; i < globals.app_scoresheet.players[0].scores.length; i++)
+                {
+                    new_player.scores.add(0);
+                }
+            }
+
+            //Add the new player to the list of players
+            globals.app_scoresheet.players.add(new_player);
         });
     }
 

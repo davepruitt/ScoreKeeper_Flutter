@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'pages/page_home.dart';
 import 'pages/page_players.dart';
+import 'pages/page_rankings.dart';
+import '../model/globals.dart' as globals;
 
-void main() 
+Future<void> main() async
 {
+    await globals.app_settings.Initialize();
     runApp(const MyApp());
 }
 
@@ -24,17 +27,17 @@ class MyApp extends StatelessWidget
                 length: 5,
                 child: Scaffold(
                     appBar: AppBar(
-                        backgroundColor: Color(0xFF3F5AA6),
+                        backgroundColor: const Color(0xFF3F5AA6),
                         title: Text(score_keeper_title)
                     ),
                     bottomNavigationBar: tab_menu(),
-                    body: TabBarView(
+                    body: const TabBarView(
                         children: [
-                            Container(child: Page_Home(title: "Main Page")),
-                            Container(child: Page_Players(title: "Players Page")),
-                            Container(child: Icon(Icons.format_list_numbered)),
-                            Container(child: Icon(Icons.bar_chart_rounded)),
-                            Container(child: Icon(Icons.settings)),
+                            Page_Home(title: "Main Page"),
+                            Page_Players(title: "Players Page"),
+                            Page_Rankings(title: "Rankings Page"),
+                            Icon(Icons.bar_chart_rounded),
+                            Icon(Icons.settings),
                         ]
                     )
                 )

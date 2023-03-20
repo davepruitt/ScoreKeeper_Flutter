@@ -40,7 +40,10 @@ class Page_Home_State extends State<Page_Home>
         Navigator.push(
             context, 
             MaterialPageRoute(builder: (context) => const Subpage_AddNewRound(title: "Add new round"))
-        );
+        ).then((value) => 
+        {
+            setState(() { })
+        });
     }
 
     List<DataColumn> build_data_table_columns (BuildContext context)
@@ -120,10 +123,17 @@ class Page_Home_State extends State<Page_Home>
 
     Widget build_data_table (BuildContext context)
     {
-        return DataTable(
-            columns: build_data_table_columns(context),
-            rows: build_data_table_rows(context)
-        );
+        if (globals.app_scoresheet.players.isNotEmpty && globals.app_scoresheet.players[0].scores.isNotEmpty)
+        {
+            return DataTable(
+                columns: build_data_table_columns(context),
+                rows: build_data_table_rows(context)
+            );
+        }
+        else
+        {
+            return const SizedBox(width: 1, height: 1);
+        }
     }
 
     @override
