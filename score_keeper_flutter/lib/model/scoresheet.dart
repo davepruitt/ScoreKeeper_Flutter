@@ -10,4 +10,12 @@ class ScoreSheet
     {
         //empty
     }
+
+    void ClearRounds ()
+    {
+        for (int i = 0; i < players.length; i++)
+        {
+            players[i].scores.clear();
+        }
+    }
 }

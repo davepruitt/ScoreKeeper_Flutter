@@ -26,7 +26,38 @@ class Page_Home_State extends State<Page_Home>
 
     void ask_user_about_clearing_all_rounds ()
     {
-        //empty
+        AlertDialog alert_dialog = AlertDialog(
+            title: const Text("Clear all rounds"),
+            content: const Text("This will clear all rounds from your game. Are you sure you want to proceed?"),
+            actions: <Widget>[
+                TextButton(
+                    child: const Text("Cancel"),
+                    onPressed: () => Navigator.pop(context, "Cancel"),
+                ),
+                TextButton(
+                    child: const Text("OK"),
+                    onPressed: () => Navigator.pop(context, "OK")
+                )
+            ]
+        );
+
+        showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (context) => alert_dialog,
+        ).then((value) 
+        {
+            if (value is String)
+            {
+                if (value == "OK")
+                {
+                    setState(() 
+                    {
+                        globals.app_scoresheet.ClearRounds();
+                    });
+                }
+            }
+        });
     }
 
     void remove_last_round ()
@@ -36,7 +67,7 @@ class Page_Home_State extends State<Page_Home>
 
     void clear_all_rounds ()
     {
-        //empty
+
     }
 
     void add_new_round ()
