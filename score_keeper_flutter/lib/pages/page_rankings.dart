@@ -182,7 +182,7 @@ class Page_Rankings_State extends State<Page_Rankings>
         return Scaffold(
             body: SingleChildScrollView(
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                         const Text("Choose how to order the players:"),
                         const SizedBox(height: 5),

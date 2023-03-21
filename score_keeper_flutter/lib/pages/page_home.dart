@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:score_keeper_flutter/pages/subpage_add_new_round.dart';
 import '../model/player.dart';
 import '../model/globals.dart' as globals;
@@ -15,6 +16,9 @@ class Page_Home extends StatefulWidget
 
 class Page_Home_State extends State<Page_Home> 
 {
+    final vertical_scroll_controller = ScrollController();
+    final horizontal_scroll_controller = ScrollController();
+
     void ask_user_about_removal_of_round ()
     {
         //empty
@@ -141,13 +145,32 @@ class Page_Home_State extends State<Page_Home>
     {
         //Now create the main UI for the page
         return Scaffold(
-            body: SingleChildScrollView(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                        build_data_table(context)
-                    ],
-                ),
+            body: Scrollbar(
+                controller: vertical_scroll_controller,
+                thumbVisibility: true,
+                trackVisibility: true,
+                child: SingleChildScrollView(
+                    controller: vertical_scroll_controller,
+                    scrollDirection: Axis.vertical,
+                    child: Scrollbar(
+                        controller: horizontal_scroll_controller,
+                        thumbVisibility: true,
+                        trackVisibility: true,
+                        child: SingleChildScrollView(
+                            controller: horizontal_scroll_controller,
+                            scrollDirection: Axis.horizontal,
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                    Align(
+                                        alignment: Alignment.center,
+                                        child: build_data_table(context)
+                                    )
+                                ],
+                            )
+                        ),
+                    )
+                )
             ),
             floatingActionButton: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
