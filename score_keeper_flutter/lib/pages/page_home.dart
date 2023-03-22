@@ -21,7 +21,38 @@ class Page_Home_State extends State<Page_Home>
 
     void ask_user_about_removal_of_round ()
     {
-        //empty
+        AlertDialog alert_dialog = AlertDialog(
+            title: const Text("Remove last round"),
+            content: const Text("This will remove the most recent round from your game. Are you sure you want to proceed?"),
+            actions: <Widget>[
+                TextButton(
+                    child: const Text("Cancel"),
+                    onPressed: () => Navigator.pop(context, "Cancel"),
+                ),
+                TextButton(
+                    child: const Text("OK"),
+                    onPressed: () => Navigator.pop(context, "OK")
+                )
+            ]
+        );
+
+        showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (context) => alert_dialog,
+        ).then((value) 
+        {
+            if (value is String)
+            {
+                if (value == "OK")
+                {
+                    setState(() 
+                    {
+                        globals.app_scoresheet.RemoveLastRound();
+                    });
+                }
+            }
+        });        
     }
 
     void ask_user_about_clearing_all_rounds ()
@@ -58,16 +89,6 @@ class Page_Home_State extends State<Page_Home>
                 }
             }
         });
-    }
-
-    void remove_last_round ()
-    {
-        //empty
-    }
-
-    void clear_all_rounds ()
-    {
-
     }
 
     void add_new_round ()
