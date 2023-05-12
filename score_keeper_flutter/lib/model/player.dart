@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'dart:convert';
 
 class Player
 {
@@ -22,4 +23,15 @@ class Player
     {
         return scores.average;
     }
+
+    //JSON conversion methods
+    Map<String, dynamic> toJson() => 
+    {
+        'name' : name,
+        'scores' : json.encode(scores)
+    };
+
+    Player.fromJson(Map<String, dynamic> json_input)
+        : name = json_input["name"],
+        scores = json.decode(json_input["scores"])
 }
